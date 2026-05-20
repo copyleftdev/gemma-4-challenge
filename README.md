@@ -11,7 +11,8 @@ defensible for healthcare compliance review. See
 [docs/competition-positioning.md](docs/competition-positioning.md),
 [docs/architecture-diagrams.md](docs/architecture-diagrams.md), and
 [docs/demo-script.md](docs/demo-script.md). PNG article embeds are collected in
-[docs/devto-assets.md](docs/devto-assets.md).
+[docs/devto-assets.md](docs/devto-assets.md), and the DEV submission draft is
+in [docs/devto-submission.md](docs/devto-submission.md).
 
 ## Exposure Boundary
 
