@@ -1,0 +1,110 @@
+policy_id: navigation_rules
+version: 0.1.0
+status: draft_for_human_review
+purpose: Define how Care Compass may match users to services, benefits information, and official application channels.
+source_alignment:
+  - hrsa_health_centers
+  - medicaid_eligibility_policy
+  - samhsa_findtreatment
+  - healthcare_gov
+  - local_211
+default_decision: suggest_navigation_options_without_determination
+need_categories:
+  - id: primary_care
+    allowed_sources:
+      - hrsa_health_centers
+      - local_health_department
+      - signed_local_resource_directory
+  - id: dental_care
+    allowed_sources:
+      - hrsa_health_centers
+      - signed_local_resource_directory
+  - id: behavioral_health
+    allowed_sources:
+      - samhsa_findtreatment
+      - local_health_department
+      - signed_local_resource_directory
+  - id: substance_use_treatment
+    allowed_sources:
+      - samhsa_findtreatment
+      - signed_local_resource_directory
+  - id: insurance_or_medicaid_navigation
+    allowed_sources:
+      - medicaid_gov
+      - healthcare_gov
+      - state_medicaid_agency
+      - signed_local_assister_directory
+  - id: food_transportation_housing
+    allowed_sources:
+      - local_211
+      - signed_local_resource_directory
+  - id: language_access
+    allowed_sources:
+      - clinic_record
+      - signed_local_resource_directory
+matching_rules:
+  minimum_fields:
+    - need_category
+  optional_fields:
+    - zip_code_or_city
+    - preferred_language
+    - accessibility_need
+    - transportation_need
+    - insurance_status_general
+  prohibited_fields:
+    - social_security_number
+    - full_insurance_member_id
+    - detailed_diagnosis
+    - full_patient_chart
+  ranking_order:
+    - emergency_or_crisis_route_if_matched
+    - verified_active_resource
+    - official_government_or_211_source
+    - distance_or_geography_match
+    - language_or_accessibility_match
+    - low_cost_or_sliding_scale_marker
+  stale_record_behavior:
+    active_with_old_retrieval_date: show_with_verify_instruction
+    inactive: do_not_recommend
+    missing_last_verified: show_only_as_general_directory_link
+benefits_navigation:
+  allowed:
+    - Explain that Medicaid and CHIP rules vary by state and category.
+    - Explain that official agencies or assisters determine eligibility.
+    - Link to official state, Medicaid.gov, HealthCare.gov, or assister resources.
+    - Help the user list documents or questions they may need for an application.
+    - Use general non-sensitive facts to suggest which official channel to contact.
+  prohibited:
+    - Say the user is eligible or ineligible.
+    - Calculate a final eligibility decision.
+    - Ask for SSN or full identity documents.
+    - Submit an application on behalf of the user.
+    - Advise the user to omit or alter application information.
+resource_answer_requirements:
+  include:
+    - resource_name
+    - source_id
+    - last_verified_or_retrieved
+    - reason_for_match
+    - user_should_verify_availability
+  avoid:
+    - medical_claims_about_quality
+    - guaranteed_availability
+    - hidden_ranking_or_paid_placement
+    - invented_hours_or_services
+confidence_policy:
+  high:
+    criteria:
+      - verified_active_record
+      - current_source
+      - direct_category_match
+    allowed_response: recommend_specific_resource
+  medium:
+    criteria:
+      - official_directory_link
+      - incomplete_service_details
+    allowed_response: provide_directory_and_verification_steps
+  low:
+    criteria:
+      - no_signed_resource_match
+    allowed_response: ask_for_more_context_or_offer_official_directory

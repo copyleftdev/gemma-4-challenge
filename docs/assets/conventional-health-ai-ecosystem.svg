@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="960" viewBox="0 0 1440 960" role="img" aria-labelledby="title desc">
+  <title id="title">Conventional healthcare AI middleware ecosystem</title>
+  <desc id="desc">A layered enterprise AI architecture with many middleware services, mutable logs, cloud model routing, and high operational cost pressure.</desc>
+  <defs>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M 36 0 L 0 0 0 36" fill="none" stroke="#c5d6d2" stroke-width="1" opacity="0.42"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#34756f"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#1a2c35" flood-opacity="0.13"/>
+    </filter>
+    <style>
+      .bg { fill: #f5f8f7; }
+      .panel { fill: #fbfdfb; stroke: #b8ccc7; stroke-width: 1.4; filter: url(#shadow); }
+      .soft { fill: #eef6f1; stroke: #bdd5ce; stroke-width: 1.2; }
+      .warn { fill: #fbf0d7; stroke: #d6a64a; stroke-width: 1.4; }
+      .risk { fill: #f8dfd8; stroke: #c86b55; stroke-width: 1.4; }
+      .blue { fill: #e5eef7; stroke: #6590bf; stroke-width: 1.4; }
+      .ink { fill: #172735; }
+      .muted { fill: #536a73; }
+      .teal { fill: #1f756f; }
+      .blueText { fill: #285c9f; }
+      .amberText { fill: #98620f; }
+      .coralText { fill: #a54e3f; }
+      .title { font: 800 42px Archivo, Aptos, Segoe UI, sans-serif; }
+      .subtitle { font: 500 18px Archivo, Aptos, Segoe UI, sans-serif; }
+      .label { font: 800 13px Archivo, Aptos, Segoe UI, sans-serif; letter-spacing: 0.08em; }
+      .head { font: 800 21px Archivo, Aptos, Segoe UI, sans-serif; }
+      .nodeHead { font: 800 18px Archivo, Aptos, Segoe UI, sans-serif; }
+      .body { font: 500 15px Archivo, Aptos, Segoe UI, sans-serif; }
+      .small { font: 500 13px Archivo, Aptos, Segoe UI, sans-serif; }
+      .metric { font: 800 24px Archivo, Aptos, Segoe UI, sans-serif; }
+      .line { fill: none; stroke: #34756f; stroke-width: 2.4; marker-end: url(#arrow); }
+      .riskLine { fill: none; stroke: #c86b55; stroke-width: 2.2; stroke-dasharray: 7 7; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1440" height="960"/>
+  <rect width="1440" height="960" fill="url(#grid)" opacity="0.62"/>
+
+  <text x="72" y="78" class="title ink">Conventional Healthcare AI Middleware Stack</text>
+  <text x="72" y="112" class="subtitle muted">Typical enterprise pattern: many services are added around the model to recreate governance after generation.</text>
+  <text x="72" y="147" class="small muted">Illustrative planning bands only. Real cost depends on PHI scope, traffic, uptime, staffing, contracts, and compliance posture.</text>
+
+  <rect x="72" y="188" width="954" height="596" rx="22" class="panel"/>
+  <text x="108" y="230" class="label teal">REQUEST AND MODEL PATH</text>
+
+  <g transform="translate(112 272)">
+    <rect width="192" height="92" rx="14" class="soft"/>
+    <text x="22" y="34" class="nodeHead ink">User Channels</text>
+    <text x="22" y="58" class="body muted">portal, SMS, call center</text>
+    <text x="22" y="78" class="small muted">mixed PHI inputs</text>
+  </g>
+
+  <g transform="translate(370 272)">
+    <rect width="192" height="92" rx="14" class="blue"/>
+    <text x="22" y="34" class="nodeHead ink">Identity &amp; Intake</text>
+    <text x="22" y="58" class="body muted">auth, consent, DLP</text>
+    <text x="22" y="78" class="small muted">policy scattered here</text>
+  </g>
+
+  <g transform="translate(628 272)">
+    <rect width="192" height="92" rx="14" class="soft"/>
+    <text x="22" y="34" class="nodeHead ink">Data Fabric</text>
+    <text x="22" y="58" class="body muted">ETL, RAG, vector DB</text>
+    <text x="22" y="78" class="small muted">mutable source joins</text>
+  </g>
+
+  <g transform="translate(786 450)">
+    <rect width="198" height="102" rx="14" class="warn"/>
+    <text x="22" y="35" class="nodeHead ink">Cloud LLM Layer</text>
+    <text x="22" y="61" class="body muted">API gateway + vendor</text>
+    <text x="22" y="82" class="small amberText">model is the center</text>
+  </g>
+
+  <g transform="translate(488 450)">
+    <rect width="208" height="102" rx="14" class="blue"/>
+    <text x="22" y="35" class="nodeHead ink">Prompt Gateway</text>
+    <text x="22" y="61" class="body muted">templates, filters, tools</text>
+    <text x="22" y="82" class="small muted">runtime policy hints</text>
+  </g>
+
+  <g transform="translate(184 450)">
+    <rect width="216" height="102" rx="14" class="soft"/>
+    <text x="22" y="35" class="nodeHead ink">App Middleware</text>
+    <text x="22" y="61" class="body muted">queues, agents, actions</text>
+    <text x="22" y="82" class="small muted">workflow glue</text>
+  </g>
+
+  <g transform="translate(178 636)">
+    <rect width="230" height="102" rx="14" class="risk"/>
+    <text x="22" y="35" class="nodeHead ink">Audit Reconstruction</text>
+    <text x="22" y="61" class="body muted">logs, SIEM, BI exports</text>
+    <text x="22" y="82" class="small coralText">reason assembled later</text>
+  </g>
+
+  <g transform="translate(496 636)">
+    <rect width="230" height="102" rx="14" class="risk"/>
+    <text x="22" y="35" class="nodeHead ink">Compliance Review</text>
+    <text x="22" y="61" class="body muted">screenshots, tickets</text>
+    <text x="22" y="82" class="small coralText">human evidence chase</text>
+  </g>
+
+  <g transform="translate(810 636)">
+    <rect width="174" height="102" rx="14" class="risk"/>
+    <text x="22" y="35" class="nodeHead ink">Incident Desk</text>
+    <text x="22" y="61" class="body muted">breach, jailbreak,</text>
+    <text x="22" y="82" class="small coralText">hallucinated resource</text>
+  </g>
+
+  <path class="line" d="M304 318 H358"/>
+  <path class="line" d="M562 318 H616"/>
+  <path class="line" d="M724 366 C728 416 656 418 626 448"/>
+  <path class="line" d="M488 502 H412"/>
+  <path class="line" d="M696 502 H774"/>
+  <path class="riskLine" d="M884 552 C860 612 766 625 706 636"/>
+  <path class="riskLine" d="M492 552 C430 602 352 616 292 636"/>
+  <path class="riskLine" d="M884 552 C914 596 912 614 904 636"/>
+
+  <rect x="1064" y="188" width="304" height="596" rx="22" class="panel"/>
+  <text x="1096" y="230" class="label teal">COST PRESSURE</text>
+
+  <g transform="translate(1096 266)">
+    <text x="0" y="0" class="metric ink">$8k-$45k+/mo</text>
+    <text x="0" y="26" class="body muted">cloud, model, vector DB, logs,</text>
+    <text x="0" y="48" class="body muted">security tooling, monitoring</text>
+  </g>
+
+  <g transform="translate(1096 356)">
+    <text x="0" y="0" class="metric ink">$20k-$80k+</text>
+    <text x="0" y="26" class="body muted">initial integration, PHI review,</text>
+    <text x="0" y="48" class="body muted">DLP, SSO, policy plumbing</text>
+  </g>
+
+  <g transform="translate(1096 446)">
+    <text x="0" y="0" class="metric ink">0.5-2 FTE</text>
+    <text x="0" y="26" class="body muted">ongoing audit response, tuning,</text>
+    <text x="0" y="48" class="body muted">exception handling, reviews</text>
+  </g>
+
+  <rect x="1092" y="542" width="242" height="1.2" fill="#b8ccc7"/>
+  <text x="1096" y="586" class="label coralText">CRISIS FAILURE MODE</text>
+  <text x="1096" y="624" class="body ink">When an unsafe answer happens,</text>
+  <text x="1096" y="648" class="body ink">teams reconstruct intent from</text>
+  <text x="1096" y="672" class="body ink">mutable logs and model output.</text>
+  <text x="1096" y="718" class="body muted">The question becomes:</text>
+  <text x="1096" y="744" class="head coralText">"What did the model see,</text>
+  <text x="1096" y="770" class="head coralText">and which policy applied?"</text>
+
+  <rect x="72" y="824" width="1296" height="74" rx="18" fill="#e8f3ef" stroke="#b8ccc7"/>
+  <text x="104" y="862" class="head ink">Core inefficiency:</text>
+  <text x="298" y="862" class="body muted">governance, source verification, and explanation are distributed across services instead of becoming one decision artifact.</text>
+</svg>

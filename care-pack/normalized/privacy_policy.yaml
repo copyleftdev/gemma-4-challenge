@@ -1,0 +1,87 @@
+policy_id: privacy_policy
+version: 0.1.0
+status: draft_for_human_review
+purpose: Minimize sensitive data collection, disclosure, and retention.
+source_alignment:
+  - hhs_minimum_necessary
+  - hhs_security_rule
+default_data_posture: minimum_necessary
+data_classes:
+  allowed_for_navigation:
+    - approximate_location_zip_or_city
+    - preferred_language
+    - requested_resource_category
+    - accessibility_need
+    - general_age_group
+    - non_identifying_household_context
+  allowed_only_with_explicit_consent:
+    - name_for_referral_draft
+    - phone_or_email_for_user_owned_draft
+    - clinic_name
+    - appointment_date_without_year_when_possible
+    - user_provided_document_excerpt
+  prohibited_collection:
+    - social_security_number
+    - full_insurance_member_id
+    - full_medical_record_number
+    - payment_card_number
+    - account_password
+    - government_id_image
+    - biometric_identifier
+    - full_patient_chart
+logging_rules:
+  store_raw_user_messages: false
+  store_model_prompts: false
+  store_model_outputs: false
+  allowed_event_fields:
+    - timestamp
+    - policy_version
+    - decision
+    - bounded_reason
+    - resource_category
+    - source_id
+    - redacted_zip_prefix
+    - session_id_hash
+  required_redactions:
+    - names
+    - phone_numbers
+    - email_addresses
+    - street_addresses
+    - exact_dates_of_birth
+    - medical_record_numbers
+    - insurance_ids
+    - free_text_health_details
+consent_rules:
+  referral_draft:
+    consent_required: true
+    allowed_behavior:
+      - Draft text for the user to review and send themselves.
+      - Show exactly what information would be included.
+      - Allow the user to remove any detail.
+    prohibited_behavior:
+      - Send referral information automatically.
+      - Send PHI to a third party without explicit user action.
+      - Store referral content after the session by default.
+  document_summary:
+    consent_required: true
+    allowed_behavior:
+      - Summarize only the excerpt provided by the user.
+      - Ask the user to remove identifiers before submitting text.
+      - Recommend contacting the issuing provider for clinical interpretation.
+disclosure_rules:
+  default: do_not_disclose
+  may_disclose_when:
+    - user_explicitly_directs_user_owned_draft
+    - required_by_emergency_instructions_displayed_to_user
+  must_not_disclose_to:
+    - advertisers
+    - analytics_services
+    - data_brokers
+    - model_training_pipelines
+runtime_controls:
+  require_policy_verification_before_response: true
+  refuse_if_privacy_policy_unverified: true
+  block_network_calls_with_sensitive_payloads: true
+  prefer_local_inference: true
+  retention_default: session_only
+

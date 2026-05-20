@@ -1,0 +1,146 @@
+directory_id: resource_directory_seed
+version: 0.1.0
+status: draft_for_human_review
+purpose: Initial national resource entries for the Care Compass MVP.
+records:
+  - id: national_911
+    name: Emergency services
+    category: emergency
+    jurisdiction: US
+    active: true
+    contact:
+      phone: "911"
+    use_when:
+      - immediate danger
+      - medical emergency
+      - violence or safety emergency
+    limitations:
+      - Not a general navigation service.
+    source_id: emergency_services_us
+    last_verified: "2026-05-20"
+  - id: national_988
+    name: 988 Suicide and Crisis Lifeline
+    category: crisis_support
+    jurisdiction: US_and_territories
+    active: true
+    contact:
+      phone_or_text: "988"
+      url: https://988lifeline.org/
+    use_when:
+      - suicidal crisis
+      - emotional distress
+      - mental health crisis
+      - concern about someone else in crisis
+    limitations:
+      - Not a replacement for 911 when immediate physical danger is present.
+    source_id: lifeline_988
+    last_verified: "2026-05-20"
+  - id: national_poison_control
+    name: Poison Control
+    category: poisoning
+    jurisdiction: US
+    active: true
+    contact:
+      phone: "1-800-222-1222"
+      url: https://www.poison.org/contact-us
+      online_tool: https://triage.webpoisoncontrol.org/
+    use_when:
+      - possible poisoning
+      - medication overdose
+      - chemical exposure
+      - swallowed unknown substance
+    limitations:
+      - Call 911 first if the person is unconscious, not breathing, or in immediate danger.
+    source_id: poison_control
+    last_verified: "2026-05-20"
+  - id: hrsa_find_a_health_center
+    name: HRSA Find a Health Center
+    category: primary_care_directory
+    jurisdiction: US
+    active: true
+    contact:
+      url: https://findahealthcenter.hrsa.gov/
+    use_when:
+      - low_cost_primary_care
+      - community_health_center_lookup
+      - dental_or_behavioral_health_services_at_health_centers
+    limitations:
+      - User should verify hours, services, fees, and appointment availability directly with the center.
+    source_id: hrsa_health_centers
+    last_verified: "2026-05-20"
+  - id: samhsa_findtreatment
+    name: FindTreatment.gov
+    category: behavioral_health_substance_use_directory
+    jurisdiction: US
+    active: true
+    contact:
+      url: https://findtreatment.gov/
+    use_when:
+      - substance_use_treatment_lookup
+      - mental_health_treatment_lookup
+    limitations:
+      - Not an emergency service. Use 988 or 911 for crisis or immediate danger.
+    source_id: samhsa_findtreatment
+    last_verified: "2026-05-20"
+  - id: medlineplus
+    name: MedlinePlus
+    category: patient_education
+    jurisdiction: US
+    active: true
+    contact:
+      url: https://medlineplus.gov/
+      connect_service: https://connect.medlineplus.gov/service
+    use_when:
+      - patient_education_linkout
+      - plain_language_health_topic_reference
+    limitations:
+      - Use as education linkout, not personal medical advice.
+      - Follow MedlinePlus display and attribution restrictions.
+    source_id: medlineplus_connect
+    last_verified: "2026-05-20"
+  - id: medicaid_gov
+    name: Medicaid.gov
+    category: benefits_information
+    jurisdiction: US
+    active: true
+    contact:
+      url: https://www.medicaid.gov/medicaid/eligibility-policy
+    use_when:
+      - medicaid_general_information
+      - benefits_navigation_starting_point
+    limitations:
+      - Official eligibility decisions are made by the relevant state or agency.
+    source_id: medicaid_eligibility_policy
+    last_verified: "2026-05-20"
+  - id: healthcare_gov
+    name: HealthCare.gov
+    category: health_insurance_marketplace
+    jurisdiction: US
+    active: true
+    contact:
+      url: https://www.healthcare.gov/
+    use_when:
+      - marketplace_coverage_information
+      - application_channel_information
+    limitations:
+      - Eligibility and enrollment details must be verified through official channels.
+    source_id: healthcare_gov
+    last_verified: "2026-05-20"
+  - id: national_211
+    name: 211
+    category: social_service_directory
+    jurisdiction: US
+    active: true
+    contact:
+      phone: "211"
+      url: https://www.211.org/
+    use_when:
+      - food_assistance
+      - housing_support
+      - utility_assistance
+      - transportation_support
+      - local_social_services
+    limitations:
+      - Local coverage and service details vary. User should verify directly.
+    source_id: local_211
+    last_verified: "2026-05-20"

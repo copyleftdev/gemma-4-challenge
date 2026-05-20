@@ -1,0 +1,59 @@
+policy_id: trusted_health_sources
+version: 0.1.0
+status: draft_for_human_review
+purpose: Define approved sources for health education linkouts and display rules.
+default_decision: link_out_not_medical_advice
+trusted_sources:
+  - id: medlineplus
+    name: MedlinePlus
+    owner: National Library of Medicine
+    source_alignment: medlineplus_connect
+    allowed_use:
+      - display_returned_medlineplus_connect_data
+      - link_to_medlineplus_pages
+      - summarize_user_question_context_before_link
+    restrictions:
+      - do_not_copy_full_medlineplus_pages
+      - attribute_information_to_medlineplus_gov_when_displaying_returned_data
+      - do_not_use_medlineplus_logo
+      - do_not_imply_endorsement
+    rate_limit_policy:
+      max_requests_per_minute_per_ip: 100
+      cache_recommendation_hours: "12_to_24"
+  - id: hhs
+    name: U.S. Department of Health and Human Services
+    allowed_use:
+      - link_to_official_public_guidance
+      - cite_as_policy_source_for_pack
+    restrictions:
+      - do_not_represent_app_as_hhs_endorsed
+  - id: medicaid_gov
+    name: Medicaid.gov
+    owner: Centers for Medicare and Medicaid Services
+    allowed_use:
+      - link_to_general_eligibility_policy
+      - link_to_state_navigation_resources
+    restrictions:
+      - do_not_determine_user_eligibility
+  - id: hrsa_data
+    name: HRSA Data Warehouse
+    allowed_use:
+      - use_health_center_service_delivery_sites_for_navigation
+      - link_to_hrsa_find_a_health_center_or_dataset
+    restrictions:
+      - do_not_claim_resource_availability_without_verification_instruction
+education_response_rules:
+  allowed:
+    - Give a short plain-language framing sentence.
+    - Link to trusted sources for health topics.
+    - Encourage users to ask a provider about personal medical decisions.
+  prohibited:
+    - Replace clinical advice.
+    - Interpret symptoms, labs, imaging, or medications as a diagnosis.
+    - Create uncited medical instructions from model knowledge.
+    - Copy full external pages into the app.
+source_fallback_policy:
+  if_no_trusted_source_match:
+    decision: block
+    reason: source_not_trusted
+    allowed_response: Say no trusted education source is configured for that topic and offer to search official sources after review.

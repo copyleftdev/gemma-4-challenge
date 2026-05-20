@@ -1,0 +1,128 @@
+ruleset_id: care_compass_community_navigation
+version: 0.1.0
+status: draft_for_human_review
+jurisdiction: US
+review_required_before_signing: true
+intended_use:
+  name: Care Compass
+  description: Local-first community health navigation assistant.
+  allowed_setting:
+    - community health navigation
+    - clinic and social-service resource matching
+    - patient education linkouts
+    - appointment preparation
+    - plain-language summaries of user-provided text
+  excluded_setting:
+    - diagnosis
+    - treatment recommendation
+    - medication dosing
+    - emergency dispatch
+    - benefits eligibility determination
+    - legal or insurance representation
+model_role:
+  allowed:
+    - classify_user_need
+    - extract_non_sensitive_navigation_facts
+    - summarize_user_provided_material
+    - generate_questions_for_provider_or_assister
+    - draft_plain_language_next_steps
+    - translate_or_adapt_reading_level
+  forbidden:
+    - override_signed_policy
+    - invent_resource_records
+    - invent_eligibility_rules
+    - diagnose_or_treat
+    - determine_emergency_severity
+    - persist_sensitive_health_information
+aion_targets:
+  - source: normalized/scope_of_practice.yaml
+    signed_output: signed/scope_of_practice.aion
+    required_at_runtime: true
+  - source: normalized/privacy_policy.yaml
+    signed_output: signed/privacy_policy.aion
+    required_at_runtime: true
+  - source: normalized/escalation_policy.yaml
+    signed_output: signed/escalation_policy.aion
+    required_at_runtime: true
+  - source: normalized/navigation_rules.yaml
+    signed_output: signed/navigation_rules.aion
+    required_at_runtime: true
+  - source: normalized/trusted_health_sources.yaml
+    signed_output: signed/trusted_health_sources.aion
+    required_at_runtime: true
+  - source: normalized/resource_directory_seed.yaml
+    signed_output: signed/resource_directory_seed.aion
+    required_at_runtime: true
+bounded_runtime_reasons:
+  allow:
+    - navigation_allowed
+    - education_linkout_allowed
+    - plain_language_allowed
+    - referral_draft_allowed_with_consent
+  block:
+    - diagnosis_blocked
+    - treatment_advice_blocked
+    - medication_instruction_blocked
+    - eligibility_determination_blocked
+    - unsafe_data_request_blocked
+    - unverified_resource_blocked
+    - policy_bypass_attempt_blocked
+    - policy_verification_failed
+    - source_not_trusted
+  escalate:
+    - emergency_medical_signal
+    - suicide_or_self_harm_signal
+    - harm_to_others_signal
+    - poisoning_signal
+    - abuse_or_immediate_safety_signal
+source_refs:
+  - id: hhs_minimum_necessary
+    title: HHS HIPAA Minimum Necessary Requirement
+    url: https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/minimum-necessary-requirement/index.html
+    source_class: federal_guidance
+    accessed_on: "2026-05-20"
+  - id: hhs_security_rule
+    title: HHS HIPAA Security Rule
+    url: https://www.hhs.gov/hipaa/for-professionals/security/index.html
+    source_class: federal_guidance
+    accessed_on: "2026-05-20"
+  - id: lifeline_988
+    title: 988 Suicide and Crisis Lifeline
+    url: https://988lifeline.org/about/
+    source_class: national_crisis_resource
+    accessed_on: "2026-05-20"
+  - id: poison_control
+    title: Poison Control Contact
+    url: https://www.poison.org/contact-us
+    source_class: national_crisis_resource
+    accessed_on: "2026-05-20"
+  - id: hrsa_health_centers
+    title: HRSA Health Center Service Delivery Sites
+    url: https://data.hrsa.gov/topics/health-centers
+    source_class: federal_dataset
+    accessed_on: "2026-05-20"
+  - id: medlineplus_connect
+    title: MedlinePlus Connect Web Service
+    url: https://medlineplus.gov/medlineplus-connect/web-service/
+    source_class: federal_patient_education
+    accessed_on: "2026-05-20"
+  - id: medicaid_eligibility_policy
+    title: Medicaid Eligibility Policy
+    url: https://www.medicaid.gov/medicaid/eligibility-policy
+    source_class: federal_benefits_guidance
+    accessed_on: "2026-05-20"
+  - id: samhsa_findtreatment
+    title: SAMHSA FindTreatment.gov
+    url: https://www.samhsa.gov/substance-use/treatment/find-treatment
+    source_class: federal_treatment_locator
+    accessed_on: "2026-05-20"
+  - id: healthcare_gov
+    title: HealthCare.gov
+    url: https://www.healthcare.gov/
+    source_class: federal_benefits_and_marketplace_guidance
+    accessed_on: "2026-05-20"
+  - id: local_211
+    title: 211 Essential Community Services
+    url: https://www.211.org/
+    source_class: community_service_directory
+    accessed_on: "2026-05-20"

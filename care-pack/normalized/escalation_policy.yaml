@@ -1,0 +1,101 @@
+policy_id: escalation_policy
+version: 0.1.0
+status: draft_for_human_review
+purpose: Route crisis, emergency, poisoning, and immediate safety signals before normal navigation.
+default_decision: continue_navigation_if_no_escalation_signal
+source_alignment:
+  - lifeline_988
+  - poison_control
+emergency_routes:
+  - id: emergency_services_us
+    label: Emergency services
+    action: call_911_or_local_emergency_number
+    availability: immediate
+    jurisdiction: US
+  - id: suicide_crisis_lifeline_988
+    label: 988 Suicide and Crisis Lifeline
+    action: call_or_text_988
+    availability: "24_7"
+    jurisdiction: US_and_territories
+  - id: poison_control_us
+    label: Poison Control
+    action: call_1_800_222_1222_or_use_webpoisoncontrol
+    phone: 1-800-222-1222
+    availability: "24_7"
+    jurisdiction: US
+decision_rules:
+  - id: immediate_medical_emergency
+    decision: escalate
+    reason: emergency_medical_signal
+    priority: 100
+    signals:
+      - severe_trouble_breathing
+      - chest_pain_or_pressure
+      - signs_of_stroke
+      - uncontrolled_bleeding
+      - severe_allergic_reaction
+      - loss_of_consciousness
+      - seizure_now_or_repeated
+      - severe_injury
+    required_response:
+      - Tell the user to call 911 or the local emergency number now.
+      - Do not continue routine navigation until emergency guidance is shown.
+      - Do not attempt to determine severity or rule out emergency.
+  - id: suicide_or_self_harm
+    decision: escalate
+    reason: suicide_or_self_harm_signal
+    priority: 100
+    signals:
+      - current_suicidal_thoughts
+      - self_harm_intent
+      - has_plan_or_means
+      - worried_about_someone_suicidal
+      - emotional_crisis_request
+    required_response:
+      - If immediate danger is present, tell the user to call 911 or local emergency services.
+      - Provide 988 by call or text for suicide, mental health, or emotional crisis support.
+      - Encourage staying with another trusted person when possible.
+      - Avoid long explanations before crisis resources.
+  - id: harm_to_others
+    decision: escalate
+    reason: harm_to_others_signal
+    priority: 100
+    signals:
+      - intent_to_harm_someone
+      - immediate_violence_risk
+      - weapon_or_specific_target_disclosed
+    required_response:
+      - If immediate danger is present, tell the user to call 911 or local emergency services.
+      - Do not provide tactical or enabling details.
+  - id: possible_poisoning
+    decision: escalate
+    reason: poisoning_signal
+    priority: 95
+    signals:
+      - possible_poison_exposure
+      - medication_overdose
+      - chemical_exposure
+      - swallowed_unknown_substance
+      - carbon_monoxide_concern
+    required_response:
+      - Tell the user to call Poison Control at 1-800-222-1222 in the US or use webPOISONCONTROL.
+      - If the person is unconscious, not breathing, or in immediate danger, tell the user to call 911.
+      - Do not provide home treatment instructions.
+  - id: immediate_personal_safety
+    decision: escalate
+    reason: abuse_or_immediate_safety_signal
+    priority: 90
+    signals:
+      - current_abuse_or_assault
+      - immediate_domestic_violence_risk
+      - unsafe_place_now
+      - child_or_elder_immediate_danger
+    required_response:
+      - If immediate danger is present, tell the user to call 911 or local emergency services.
+      - Offer to find local crisis or safety resources only after immediate danger guidance.
+response_constraints:
+  no_diagnosis: true
+  no_treatment_instruction: true
+  no_false_reassurance: true
+  preserve_phone_numbers_exactly: true
+  route_before_resource_matching: true

@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="960" viewBox="0 0 1440 960" role="img" aria-labelledby="title desc">
+  <title id="title">Care Compass forensic AI ecosystem</title>
+  <desc id="desc">A local-first architecture where signed Aion policy files gate Gemma before generation and produce a forensic decision record.</desc>
+  <defs>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M 36 0 L 0 0 0 36" fill="none" stroke="#c5d6d2" stroke-width="1" opacity="0.42"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f756f"/>
+    </marker>
+    <marker id="amberArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#98620f"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#1a2c35" flood-opacity="0.13"/>
+    </filter>
+    <style>
+      .bg { fill: #f5f8f7; }
+      .panel { fill: #fbfdfb; stroke: #b8ccc7; stroke-width: 1.4; filter: url(#shadow); }
+      .source { fill: #e8f3ef; stroke: #80aaa0; stroke-width: 1.5; }
+      .aion { fill: #dff0e8; stroke: #2d8074; stroke-width: 1.7; }
+      .gemma { fill: #e5eef7; stroke: #5f8fc1; stroke-width: 1.6; }
+      .record { fill: #f8ecd2; stroke: #c69231; stroke-width: 1.5; }
+      .block { fill: #f8dfd8; stroke: #c86b55; stroke-width: 1.5; }
+      .ink { fill: #172735; }
+      .muted { fill: #536a73; }
+      .teal { fill: #1f756f; }
+      .blueText { fill: #285c9f; }
+      .amberText { fill: #98620f; }
+      .coralText { fill: #a54e3f; }
+      .title { font: 800 42px Archivo, Aptos, Segoe UI, sans-serif; }
+      .subtitle { font: 500 18px Archivo, Aptos, Segoe UI, sans-serif; }
+      .label { font: 800 13px Archivo, Aptos, Segoe UI, sans-serif; letter-spacing: 0.08em; }
+      .head { font: 800 21px Archivo, Aptos, Segoe UI, sans-serif; }
+      .nodeHead { font: 800 18px Archivo, Aptos, Segoe UI, sans-serif; }
+      .body { font: 500 15px Archivo, Aptos, Segoe UI, sans-serif; }
+      .small { font: 500 13px Archivo, Aptos, Segoe UI, sans-serif; }
+      .metric { font: 800 24px Archivo, Aptos, Segoe UI, sans-serif; }
+      .line { fill: none; stroke: #1f756f; stroke-width: 2.6; marker-end: url(#arrow); }
+      .warnLine { fill: none; stroke: #98620f; stroke-width: 2.4; marker-end: url(#amberArrow); }
+      .thin { fill: none; stroke: #8eb7ad; stroke-width: 1.7; stroke-dasharray: 6 7; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1440" height="960"/>
+  <rect width="1440" height="960" fill="url(#grid)" opacity="0.62"/>
+
+  <text x="72" y="78" class="title ink">Care Compass: Signed Policy Before Gemma</text>
+  <text x="72" y="112" class="subtitle muted">The architecture turns source truth, gate decision, model call, and audit evidence into one inspectable workflow.</text>
+  <text x="72" y="147" class="small muted">Gemma does language work. Aion Context proves which healthcare rules were active and whether Gemma was allowed to answer.</text>
+
+  <rect x="72" y="188" width="930" height="608" rx="22" class="panel"/>
+  <text x="108" y="230" class="label teal">RUNTIME DECISION CHAIN</text>
+
+  <g transform="translate(116 284)">
+    <rect width="214" height="94" rx="14" class="source"/>
+    <text x="22" y="35" class="nodeHead ink">Community Request</text>
+    <text x="22" y="60" class="body muted">patient navigation need</text>
+    <text x="22" y="80" class="small muted">raw text not logged</text>
+  </g>
+
+  <g transform="translate(382 246)">
+    <rect width="222" height="126" rx="16" class="aion"/>
+    <text x="24" y="34" class="nodeHead ink">Signed Aion Pack</text>
+    <text x="24" y="60" class="body muted">scope, privacy, escalation,</text>
+    <text x="24" y="82" class="body muted">trusted sources, resources</text>
+    <text x="24" y="108" class="small teal">hash chain + signatures</text>
+  </g>
+
+  <g transform="translate(674 246)">
+    <rect width="220" height="126" rx="16" class="aion"/>
+    <text x="24" y="34" class="nodeHead ink">Deterministic Gate</text>
+    <text x="24" y="60" class="body muted">selects rule path before</text>
+    <text x="24" y="82" class="body muted">Gemma receives context</text>
+    <text x="24" y="108" class="small teal">allow, block, or escalate</text>
+  </g>
+
+  <g transform="translate(674 466)">
+    <rect width="220" height="126" rx="16" class="gemma"/>
+    <text x="24" y="34" class="nodeHead ink">Gemma 4 via Ollama</text>
+    <text x="24" y="60" class="body muted">local language generation</text>
+    <text x="24" y="82" class="body muted">only after policy allows</text>
+    <text x="24" y="108" class="small blueText">E2B default, E4B optional</text>
+  </g>
+
+  <g transform="translate(382 466)">
+    <rect width="222" height="126" rx="16" class="record"/>
+    <text x="24" y="34" class="nodeHead ink">Forensic Record</text>
+    <text x="24" y="60" class="body muted">policy IDs, hashes, rule,</text>
+    <text x="24" y="82" class="body muted">prompt hash, output hash</text>
+    <text x="24" y="108" class="small amberText">one decision object</text>
+  </g>
+
+  <g transform="translate(116 504)">
+    <rect width="192" height="94" rx="14" class="block"/>
+    <text x="22" y="35" class="nodeHead ink">Unsafe Signals</text>
+    <text x="22" y="60" class="body muted">emergency, medication,</text>
+    <text x="22" y="80" class="small coralText">jailbreak + PHI risk</text>
+  </g>
+
+  <g transform="translate(382 656)">
+    <rect width="512" height="86" rx="16" class="source"/>
+    <text x="26" y="32" class="nodeHead ink">Compliance Console</text>
+    <text x="26" y="56" class="body muted">reviewers inspect signed evidence, selected rule path,</text>
+    <text x="26" y="76" class="body muted">Gemma output, and immutable fingerprints.</text>
+  </g>
+
+  <path class="line" d="M330 331 H370"/>
+  <path class="line" d="M604 309 H662"/>
+  <path class="line" d="M784 372 V454"/>
+  <path class="line" d="M674 530 H616"/>
+  <path class="line" d="M493 592 V644"/>
+  <path class="warnLine" d="M308 526 C418 430 538 366 668 316"/>
+  <path class="line" d="M604 529 H662"/>
+  <path class="thin" d="M212 378 C212 426 212 456 212 500"/>
+  <path class="warnLine" d="M308 552 C342 628 372 682 382 698"/>
+
+  <rect x="1038" y="188" width="330" height="608" rx="22" class="panel"/>
+  <text x="1074" y="230" class="label teal">EFFICIENCY MODEL</text>
+
+  <g transform="translate(1074 270)">
+    <text x="0" y="0" class="metric ink">$0-$500/mo</text>
+    <text x="0" y="26" class="body muted">demo or pilot footprint after hardware:</text>
+    <text x="0" y="48" class="body muted">Docker app, local Ollama, signed files</text>
+  </g>
+
+  <g transform="translate(1074 360)">
+    <text x="0" y="0" class="metric ink">1 workstation</text>
+    <text x="0" y="26" class="body muted">GPU-local inference, no external</text>
+    <text x="0" y="48" class="body muted">model API required for the demo</text>
+  </g>
+
+  <g transform="translate(1074 450)">
+    <text x="0" y="0" class="metric ink">seconds</text>
+    <text x="0" y="26" class="body muted">to answer "why did this happen?"</text>
+    <text x="0" y="48" class="body muted">using the decision record</text>
+  </g>
+
+  <rect x="1068" y="542" width="262" height="1.2" fill="#b8ccc7"/>
+  <text x="1074" y="586" class="label teal">WHAT GETS REMOVED</text>
+  <text x="1074" y="624" class="body ink">No trust in model self-explanation.</text>
+  <text x="1074" y="652" class="body ink">No post-hoc policy archaeology.</text>
+  <text x="1074" y="680" class="body ink">No PHI-heavy raw prompt archive.</text>
+  <text x="1074" y="708" class="body ink">No silent policy drift.</text>
+  <text x="1074" y="748" class="small muted">Production can scale this pattern with</text>
+  <text x="1074" y="768" class="small muted">managed registries, queues, and SIEM export.</text>
+
+  <rect x="72" y="838" width="1296" height="74" rx="18" fill="#e8f3ef" stroke="#b8ccc7"/>
+  <text x="104" y="876" class="head ink">Core efficiency:</text>
+  <text x="286" y="876" class="body muted">signed governance becomes the model boundary, and the audit artifact is produced during the decision instead of reconstructed after it.</text>
+</svg>
