@@ -1,5 +1,7 @@
 # Care Compass
 
+[![Tip my tokens](https://tokentip.to/badge/copyleftdev.svg?logo=1)](https://tokentip.to/@copyleftdev)
+
 Care Compass is a local-first community health navigation prototype for the
 Gemma 4 Challenge. Gemma 4 handles language-heavy assistance; Aion Context
 holds the signed source of truth for policy, resource, privacy, escalation,
